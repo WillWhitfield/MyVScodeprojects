@@ -1,0 +1,9 @@
+class eleve:
+    def __init__ (self, nom, prenom, age, classe, section, ID, bulletin):
+        self.nom = nom
+        self.prenom = prenom
+        self.age = age
+        self.classe = classe
+        self.section = section
+        self.ID = ID
+        self.bulletin = dict(bulletin)
