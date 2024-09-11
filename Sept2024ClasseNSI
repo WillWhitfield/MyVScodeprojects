@@ -1,9 +1,25 @@
 class eleve:
-    def __init__ (self, nom, prenom, age, classe, section, ID, bulletin):
+    def __init__ (self, nom, prenom, age, classe, mdp, bulletin =None):
         self.nom = nom
         self.prenom = prenom
         self.age = age
         self.classe = classe
-        self.section = section
-        self.ID = ID
+        self.mdp = mdp
+        self.ID = f"{self.prenom[0]}+{self.nom[0]}"
+        code = {"mdp" : self.mdp, "ID" : self.ID }
         self.bulletin = dict(bulletin)
+
+    def ajouter_note(self, matière, note):
+        if 0 <= note <= 20:
+            self.bulletin["matière"] = note
+        return self.bulletin
+
+    def calculer_moyenne(self):
+        total = 0
+        qtynote = 0
+        for note in self.bulletin:
+            total += note
+            qtynote += len(self.bulletin)
+        return total/qtynote
+
+    def changermdp(self, nouveau):
