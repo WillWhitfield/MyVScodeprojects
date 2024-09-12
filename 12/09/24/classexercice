@@ -1,0 +1,82 @@
+class Vecteur:
+    def __init__ (self,x,y):
+        self.x = x
+        self.y = y
+    
+    def __repr__ (self):
+        return f"Vecteur({self.x},{self.y})"
+
+    def __str__ (self):
+        return f"({self.x},{self.y})"
+    
+    def multiplication(self, k):
+        self.x = self.x*k
+        self.y = self.y*k
+        return Vecteur(self.x,self.y)
+    
+    def addition(self,a,b):
+        self.x = self.x+a
+        self.y = self.y+b
+        return Vecteur(self.x,self.y)
+    
+
+
+class Vecteur3d:
+    def __init__ (self,x,y,z):
+        self.x = x
+        self.y = y
+        self.z = z
+
+    def __repr__ (self):
+        return f"Vecteur3d({self.x},{self.y},{self.z})"
+
+    def __str__ (self):
+        return f"({self.x},{self.y},{self.z})"
+    
+    def multiplication(self, k):
+        self.x = self.x*k
+        self.y = self.y*k
+        self.z = self.z*k
+        return Vecteur(self.x,self.y,self.z)
+    
+    def addition(self,a,b,c):
+        self.x = self.x+a
+        self.y = self.y+b
+        self.z = self.z+c
+        return Vecteur(self.x,self.y,self.z)
+    
+class Compte:
+    def __init__ (self,proprio,solde):
+        self.proprio = proprio
+        self.solde = solde
+    
+    def __repr__ (self):
+        return f"Compte({self.proprio},{self.solde})"
+    
+    def __str__ (self):
+        return f"{self.proprio}:{self.solde}"
+    
+    def retrait (self, k:float):
+        self.solde = self.solde-k
+        return self.solde
+    
+    def versement(self, k:float):
+        if k> 0:
+            self.solde = self.solde+k
+        return self.solde
+
+class Fraction:
+    def __init__ (self,num:int,denom:int):
+        if not(isinstance(denom, int)) and denom <= 0:
+            return "ValueError"
+        self.num = num
+        self.denom = denom
+
+    def __repr__ (self):
+        return f"Fraction({self.num},{self.denom})"
+    
+    def __str__ (self):
+        return f"{self.num/self.denom}"
+
+    def __eq__ (self,self1):
+        if self.num/self.denom == self1.num/self1.denom
