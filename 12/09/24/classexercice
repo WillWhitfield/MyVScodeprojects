@@ -66,17 +66,24 @@ class Compte:
         return self.solde
 
 class Fraction:
-    def __init__ (self,num:int,denom:int):
+    def __init__(self,num:int,denom:int):
         if not(isinstance(denom, int)) and denom <= 0:
             return "ValueError"
         self.num = num
         self.denom = denom
 
-    def __repr__ (self):
+    def __repr__(self):
         return f"Fraction({self.num},{self.denom})"
     
-    def __str__ (self):
+    def __str__(self):
         return f"{self.num/self.denom}"
 
-    def __eq__ (self,self1):
-        if self.num/self.denom == self1.num/self1.denom
+    def __eq__(self,other):
+        if self.num*other.denom == other.num*self.denom:
+            return True
+        else:
+            return False
+
+    def __lt__ (self,other):
+        if 
+    
