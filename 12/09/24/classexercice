@@ -146,13 +146,16 @@ class Fraction:
         return self.num * other.denom < other.num * self.denom
     
     def __add__ (self, other):
-        x = self.x + other.x
-        y = self.y + other.y
+        x = self.x*other.y + other.x*self.y
+        y = self.y*other.x + other.y*self.x
         return Fraction(x,y)
     
-    def __add__ (self, other):
+    def __mul__ (self, other):
         x = self.x*other.x
         y = self.y*other.y
         return Fraction(x,y)
     
 
+f1 = Fraction(2,4)
+f2 = Fraction(7,5)
+f3 = f1*f2
