@@ -1,0 +1,21 @@
+class moto:
+    def __init__ (self,marque,modele):
+        self.marque = marque
+        self.modele = modele
+        self.vitesse = 0
+
+    def acc (self, vitesse):
+        self.vitesse += vitesse
+
+    def __str__ (self):
+        return f"La {self.marque}{self.modele} roule a {self.vitesse} km/h"
+
+    def __repr__ (self):
+        return f"moto('{self.marque}','{self.modele}')"
+
+mybike = moto("Suzuki", "SVS650")
+
+newbike = repr(mybike)
+
+mybike.acc(80)
+print(newbike)²
