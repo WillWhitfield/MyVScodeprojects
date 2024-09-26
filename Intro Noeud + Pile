@@ -1,24 +1,52 @@
 class Noeud:
-    def __init__ (self, valeur, suivant : 'Noeud' =None):
+    def __init__(self, valeur, suivant: 'Noeud' = None):
+        # Initialise le nœud avec une valeur et un nœud suivant (si fourni)
+        # Lève une exception si 'suivant' n'est pas None et n'est pas une instance de Noeud
         if suivant != None and not isinstance(suivant, Noeud):
             raise Exception('Suivant doit être un noeud')
-        self.valeur = valeur
-        self.suivant = suivant
+        self.valeur = valeur  # Définit la valeur du nœud
+        self.suivant = suivant  # Définit la référence vers le nœud suivant
 
-    def __str__ (self):
-        return self.valeur.__str__() + ',' +self.suivant.__str__()
+    def __str__(self):
+        # Retourne la représentation sous forme de chaîne du nœud actuel et du nœud suivant
+        # Cela appelle récursivement __str__ pour tous les nœuds suivants
+        return self.valeur.__str__() + ',' + self.suivant.__str__()
 
 class Pile:
-    def __init__ (self, premier:'Noeud'=None):
+    def __init__(self, premier: 'Noeud' = None):
+        # Initialise la pile avec un nœud premier (optionnel)
+        # Lève une exception si 'premier' n'est pas None et n'est pas une instance de Noeud
         if premier != None and not isinstance(premier, Noeud):
             raise Exception('Suivant doit être une noeud')
-        self.premier = premier
+        self.premier = premier  # Définit le sommet de la pile (le premier nœud)
 
-    def ajouter_valeur (self,valeur):
+    def ajouter_valeur(self, valeur):
+        # Ajoute une nouvelle valeur à la pile en créant un nouveau nœud
+        # Le nouveau nœud pointe vers l'actuel sommet de la pile (self.premier)
         self.premier = Noeud(valeur, self.premier)
 
-    def __str__ (self):
-        return "["+self.premier.__str__()+"]"
+    def enlever_valeur(self):
+        if self.premier == None:
+            raise Exception('Pile est vide')
+        valeur_a_retirer = self.premier.valeur
+        self.premier = self.premier.suivant 
+        return valeur_a_retirer
     
+    def est_vide(self):
+        if self.premier == None:
+            print ("La liste est vide")
+        else:
+            print("La liste n'est pas vide")
+
+    def observer (self):
+        return self.premier
+    
+    def __str__(self):
+        # Retourne la représentation sous forme de chaîne de la pile à partir du sommet (premier nœud)
+        return "[" + self.premier.__str__() + "]"
+    
+# Crée une pile vide
 pile1 = Pile()
+
+# Ajoute la valeur 8 à la pile
 pile1.ajouter_valeur(8)
