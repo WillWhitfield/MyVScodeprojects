@@ -1,0 +1,161 @@
+class Vecteur:
+    def __init__(self, x, y):
+        """
+        Initialise un vecteur à partir des coordonnées x et y.
+        """
+        self.x = x
+        self.y = y
+
+    def __repr__(self):
+        """
+        Renvoie une représentation officielle du vecteur sous la forme Vecteur(x, y).
+        """
+        return f"Vecteur({self.x},{self.y})"
+
+    def __str__(self):
+        """
+        Renvoie une représentation sous forme de chaîne de caractères du vecteur (x, y).
+        """
+        return f"({self.x},{self.y})"
+    
+    def multiplication(self, k):
+        """
+        Multiplie les coordonnées x et y du vecteur par un facteur k.
+        """
+        self.x = self.x * k
+        self.y = self.y * k
+        return Vecteur(self.x, self.y)
+    
+    def addition(self, a, b):
+        """
+        Ajoute les valeurs a et b aux coordonnées x et y du vecteur.
+        """
+        self.x = self.x + a
+        self.y = self.y + b
+        return Vecteur(self.x, self.y)
+
+
+class Vecteur3d:
+    def __init__(self, x, y, z):
+        """
+        Initialise un vecteur 3D avec les coordonnées x, y et z.
+        """
+        self.x = x
+        self.y = y
+        self.z = z
+
+    def __repr__(self):
+        """
+        Renvoie une représentation officielle du vecteur sous la forme Vecteur3d(x, y, z).
+        """
+        return f"Vecteur3d({self.x},{self.y},{self.z})"
+
+    def __str__(self):
+        """
+        Renvoie une représentation sous forme de chaîne de caractères du vecteur (x, y, z).
+        """
+        return f"({self.x},{self.y},{self.z})"
+    
+    def multiplication(self, k):
+        """
+        Multiplie les coordonnées x, y et z du vecteur par un facteur k.
+        """
+        self.x = self.x * k
+        self.y = self.y * k
+        self.z = self.z * k
+        return Vecteur3d(self.x, self.y, self.z)
+    
+    def addition(self, a, b, c):
+        """
+        Ajoute les valeurs a, b et c aux coordonnées x, y et z du vecteur.
+        """
+        self.x = self.x + a
+        self.y = self.y + b
+        self.z = self.z + c
+        return Vecteur3d(self.x, self.y, self.z)
+
+
+class Compte:
+    def __init__(self, proprio, solde):
+        """
+        Initialise un compte avec un propriétaire proprio et un solde solde.
+        """
+        self.proprio = proprio
+        self.solde = solde
+
+    def __repr__(self):
+        """
+        Renvoie une représentation officielle du compte sous la forme Compte(proprio, solde).
+        """
+        return f"Compte({self.proprio},{self.solde})"
+    
+    def __str__(self):
+        """
+        Renvoie une chaîne de caractères représentant le compte avec le propriétaire et le solde.
+        """
+        return f"{self.proprio}:{self.solde}"
+    
+    def retrait(self, k: float):
+        """
+        Retire un montant k du solde du compte.
+        """
+        self.solde = self.solde - k
+        return self.solde
+    
+    def versement(self, k: float):
+        """
+        Ajoute un montant k au solde du compte si le montant est positif.
+        """
+        if k > 0:
+            self.solde = self.solde + k
+        return self.solde
+
+
+class Fraction:
+    def __init__(self, num: int, denom: int):
+        """
+        Initialise une fraction avec un numérateur num et un dénominateur denom.
+        """
+        if not isinstance(denom, int) or denom <= 0:
+            raise ValueError("Le dénominateur doit être un entier positif.")
+        self.num = num
+        self.denom = denom
+
+    def __repr__(self):
+        """
+        Renvoie une représentation officielle de la fraction sous la forme Fraction(num, denom).
+        """
+        return f"Fraction({self.num},{self.denom})"
+    
+    def __str__(self):
+        """
+        Renvoie une représentation sous forme de chaîne de caractères de la fraction (num / denom).
+        """
+        return f"{self.num}/{self.denom}"
+
+    def __eq__(self, other):
+        """
+        Vérifie l'égalité entre deux fractions.
+        """
+        return self.num * other.denom == other.num * self.denom
+
+    def __lt__(self, other):
+        """
+        Compare deux fractions pour déterminer si la première est inférieure à la seconde.
+        """
+        return self.num * other.denom < other.num * self.denom
+    
+    def __add__ (self, other):
+        x = self.x*other.y + other.x*self.y
+        y = self.y*other.x + other.y*self.x
+        return Fraction(x,y)
+    
+    def __mul__ (self, other):
+        x = self.x*other.x
+        y = self.y*other.y
+        return Fraction(x,y)
+    
+
+f1 = Fraction(2,4)
+f2 = Fraction(7,5)
+f3 = f1*f2
